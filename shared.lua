@@ -53,9 +53,10 @@ if GetConvar('voice_useNativeAudio', 'false') == 'true' then
 	}
 else
 	Cfg.voiceModes = {
-		{ 3.0,  "Whisper" }, -- Whisper speech distance in gta distance units
-		{ 7.0,  "Normal" },  -- Normal speech distance in gta distance units
-		{ 15.0, "Shouting" } -- Shout speech distance in gta distance units
+		{ 3.5,  "Susurrando" }, -- Whisper speech distance in gta distance units
+        { 15.0,  "Normal" },  -- Normal speech distance in gta distance units
+		{ 30.0, "Gritando"}, -- Shout speech distance in gta distance units
+		{ 50.0, "Gritando Alto"} -- Shout speech distance in gta distance units
 	}
 end
 
