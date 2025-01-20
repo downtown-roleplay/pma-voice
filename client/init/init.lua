@@ -27,7 +27,7 @@ AddEventHandler('onClientResourceStart', function(resource)
 	sendUIMessage({
 		uiEnabled = GetConvarInt("voice_enableUi", 1) == 1,
 		voiceModes = json.encode(Cfg.voiceModes),
-		voiceMode = 2
+		voiceMode = mode - 1
 	})
 
 	TriggerEvent('hud:setVoiceMode', Cfg.voiceModes[2][1])
