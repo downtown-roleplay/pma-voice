@@ -292,7 +292,7 @@ end)
 if gameVersion == 'redm' then
 	CreateThread(function()
 		while true do
-			if IsControlJustPressed(0, 0xF3830D8E --[[ Right Bracket ]]) then
+			if IsControlJustPressed(0, 0x446258B6 --[[ Right Bracket ]]) then
 				ExecuteCommand('cycleproximity')
 			end
 			if IsControlJustPressed(0, 0x430593AA --[[ Left Bracket ]]) then
