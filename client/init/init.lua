@@ -30,8 +30,6 @@ AddEventHandler('onClientResourceStart', function(resource)
 		voiceMode = mode - 1
 	})
 
-	TriggerEvent('hud:setVoiceMode', Cfg.voiceModes[2][1])
-
 	local radioChannel = LocalPlayer.state.radioChannel or 0
 	local callChannel = LocalPlayer.state.callChannel or 0
 

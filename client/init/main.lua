@@ -295,6 +295,9 @@ if gameVersion == 'redm' then
 			if IsControlJustPressed(0, 0x446258B6 --[[ Right Bracket ]]) then
 				ExecuteCommand('cycleproximity')
 			end
+			if IsControlJustPressed(0, 0x3C3DD371 --[[ Right Bracket ]]) then
+				ExecuteCommand('cyclereduceproximity')
+			end
 			if IsControlJustPressed(0, 0x430593AA --[[ Left Bracket ]]) then
 				ExecuteCommand('+radiotalk')
 			elseif IsControlJustReleased(0, 0x430593AA --[[ Left Bracket ]]) then

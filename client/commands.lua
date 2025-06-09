@@ -40,7 +40,6 @@ function setProximityState(proximityRange, isCustom)
 		distance = proximityRange,
 		mode = isCustom and "Custom" or voiceModeData[2],
 	}, true)
-	TriggerEvent('hud:setVoiceMode', voiceModeData[1])
 	sendUIMessage({
 		-- JS expects this value to be - 1, "custom" voice is on the last index
 		voiceMode = isCustom and #Cfg.voiceModes or mode - 1
@@ -75,10 +74,35 @@ RegisterCommand('cycleproximity', function()
 	else
 		mode = 1
 	end
-
 	setProximityState(Cfg.voiceModes[mode][1], false)
 	TriggerEvent('pma-voice:setTalkingMode', mode)
 end, false)
+
+RegisterCommand('cyclereduceproximity', function()
+	-- Proximity is either disabled, or manually overwritten.
+	if GetConvarInt('voice_enableProximityCycle', 1) ~= 1 or disableProximityCycle then return end
+
+	-- Garante que mode tenha um valor
+	if not mode then mode = 1 end
+
+	local newMode = mode - 1
+
+	-- Se newMode for menor que 1, volta para o último índice
+	if newMode < 1 then
+		mode = #Cfg.voiceModes
+	else
+		mode = newMode
+	end
+
+	local proximityDistance = Cfg.voiceModes[mode] and Cfg.voiceModes[mode][1]
+	if proximityDistance then
+		setProximityState(proximityDistance, false)
+		TriggerEvent('pma-voice:setTalkingMode', mode)
+	else
+		print("[ERRO] Configuração de voz inválida para mode:", mode)
+	end
+end, false)
+
 if gameVersion == 'fivem' then
 	RegisterKeyMapping('cycleproximity', 'Cycle Proximity', 'keyboard', GetConvar('voice_defaultCycle', 'F11'))
 end
